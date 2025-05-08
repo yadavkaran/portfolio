@@ -9,13 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-<<<<<<< HEAD
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-=======
      "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
->>>>>>> 6024cba (Updated package.json and vite.config.ts for GitHub Pages deployment)
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
