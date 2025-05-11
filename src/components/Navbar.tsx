@@ -9,7 +9,7 @@ const Links = [
   { label: "Contact", href: "/contact" },
 ];
 
-const NavLink = ({ href, children }) => (
+const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <Link
     px={3}
     py={2}
