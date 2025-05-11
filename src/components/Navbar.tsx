@@ -48,7 +48,7 @@ export default function Navbar() {
           color="purple.300"
           letterSpacing="tight"
         >
-          KSY Portfolio
+          Karan Yadav
         </Text>
         <IconButton
           size={"md"}

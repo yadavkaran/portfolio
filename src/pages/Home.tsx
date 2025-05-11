@@ -60,7 +60,7 @@ const Home = () => {
               bgGradient="linear(to-r, purple.400, blue.500)"
               bgClip="text"
             >
-              KARAN SANDESH YADAV
+              KARAN YADAV
             </Heading>
             <Text 
               fontSize="2xl" 
