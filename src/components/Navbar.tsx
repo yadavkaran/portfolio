@@ -1,67 +1,86 @@
-import { Box, Flex, Link as ChakraLink, useColorModeValue } from '@chakra-ui/react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Box, Flex, HStack, IconButton, useDisclosure, Stack, Link, Text } from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-const Navbar = () => {
-  const bgColor = useColorModeValue('white', 'gray.800')
-  const borderColor = useColorModeValue('gray.200', 'gray.700')
+const Links = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Work Experience", href: "/work-experience" },
+  { label: "Contact", href: "/contact" },
+];
+
+const NavLink = ({ href, children }) => (
+  <Link
+    px={3}
+    py={2}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: "purple.100",
+      color: "purple.700",
+    }}
+    href={href}
+    fontWeight="bold"
+    fontSize={{ base: "md", md: "lg" }}
+    color="white"
+  >
+    {children}
+  </Link>
+);
+
+export default function Navbar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box 
-      bg={bgColor} 
-      px={4} 
-      position="fixed" 
-      w="100%" 
-      zIndex={1}
-      boxShadow="sm"
-      borderBottom="1px"
-      borderColor={borderColor}
+    <Box
+      bg="rgba(30,30,40,0.95)"
+      px={4}
+      position="sticky"
+      top="0"
+      zIndex="2000"
+      boxShadow="md"
+      w="100%"
     >
-      <Flex h={16} alignItems="center" justifyContent="space-between" maxW="container.xl" mx="auto">
-        <ChakraLink 
-          as={RouterLink} 
-          to="/" 
-          fontSize="xl" 
+      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Text
           fontWeight="bold"
-          color="brand.500"
-          _hover={{ textDecoration: 'none', color: 'brand.600' }}
+          fontSize={{ base: "xl", md: "2xl" }}
+          color="purple.300"
+          letterSpacing="tight"
         >
-          Portfolio
-        </ChakraLink>
-
-        <Flex gap={8}>
-          {['Home', 'About', 'Experience', 'Projects', 'Contact'].map((item) => (
-            <ChakraLink
-              key={item}
-              as={RouterLink}
-              to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-              color="gray.600"
-              fontWeight="medium"
-              position="relative"
-              _hover={{
-                textDecoration: 'none',
-                color: 'brand.500',
-                _after: {
-                  width: '100%',
-                },
-              }}
-              _after={{
-                content: '""',
-                position: 'absolute',
-                width: '0%',
-                height: '2px',
-                bottom: '-4px',
-                left: '0',
-                bg: 'brand.500',
-                transition: 'width 0.3s ease-in-out',
-              }}
-            >
-              {item}
-            </ChakraLink>
+          KSY Portfolio
+        </Text>
+        <IconButton
+          size={"md"}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={"Open Menu"}
+          display={{ md: "none" }}
+          onClick={isOpen ? onClose : onOpen}
+          color="white"
+          bg="purple.500"
+          _hover={{ bg: "purple.600" }}
+        />
+        <HStack spacing={6} alignItems={"center"} display={{ base: "none", md: "flex" }}>
+          {Links.map((link) => (
+            <NavLink key={link.label} href={link.href}>
+              {link.label}
+            </NavLink>
           ))}
-        </Flex>
+        </HStack>
       </Flex>
-    </Box>
-  )
-}
 
-export default Navbar 
+      {/* Mobile Menu */}
+      {isOpen ? (
+        <Box pb={4} display={{ md: "none" }}>
+          <Stack as={"nav"} spacing={2}>
+            {Links.map((link) => (
+              <NavLink key={link.label} href={link.href}>
+                {link.label}
+              </NavLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
+    </Box>
+  );
+} 

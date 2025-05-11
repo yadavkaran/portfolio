@@ -75,7 +75,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/experience" element={<WorkExperience />} />
+          <Route path="/work-experience" element={<WorkExperience />} />
         </Routes>
       </Router>
     </ChakraProvider>
