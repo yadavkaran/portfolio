@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, VStack, HStack, Icon, useColorModeValue, List, ListItem, ListIcon } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack, HStack, Icon, useColorModeValue, List, ListItem, ListIcon, Flex, SimpleGrid } from '@chakra-ui/react'
 import { FaBriefcase, FaChevronRight, FaGithub } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
@@ -53,48 +53,51 @@ const WorkExperience = () => {
   const cardShadow = 'xl'
 
   return (
-    <Box pt={20} minH="100vh" bg={useColorModeValue('gray.50', 'gray.900')}>
+    <Box pt={20} minH="100vh" bgGradient="linear(to-br, #0f2027, #2c5364)">
       <Box as={motion.div} display="flex" alignItems="center" justifyContent="center" minH="100vh" w="100vw">
         <VStack spacing={12} align="center" mx="auto">
-          <Heading as="h1" size="2xl" bgGradient="linear(to-r, brand.400, brand.600)" bgClip="text" fontWeight="extrabold" textAlign="center">Professional Experience</Heading>
-          <HStack
-            spacing={6}
-            align="flex-start"
-            justify="center"
-            flexWrap="wrap"
-            w="100%"
-            direction={{ base: 'column', md: 'row' }}
-          >
+          <Heading as="h1" size="2xl" bgGradient="linear(to-r, #7f5af0, #a21caf)" bgClip="text" fontWeight="extrabold" textAlign="center" fontFamily="Fira Mono, monospace">
+            Professional Experience
+          </Heading>
+          <SimpleGrid columns={1} spacing={6} w="full">
             {workex.map((job, idx) => (
               <MotionBox
                 key={idx}
                 p={8}
-                w="320px"
+                minW="600px"
                 mx="auto"
-                bg={cardBg}
-                borderRadius="xl"
-                boxShadow={cardShadow}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                bg="rgba(20, 20, 30, 0.85)"
+                borderRadius="2xl"
+                boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.37)"
+                border="1px solid rgba(255,255,255,0.18)"
+                backdropFilter="blur(6px)"
+                position="relative"
+                transition="all 0.3s"
+                whileHover={{ scale: 1.04 }}
+                _hover={{
+                  transform: 'scale(1.04) translateY(-8px)',
+                  boxShadow: '0 12px 40px 0 #7f5af0',
+                  borderColor: '#7f5af0',
+                }}
                 mb={{ base: 6, md: 0 }}
               >
                 <HStack spacing={4} mb={2} justify="center">
-                  <Icon as={FaBriefcase} w={6} h={6} color="brand.500" />
-                  <Heading as="h3" size="md" textAlign="center">{job.role}</Heading>
-                  <Text color="brand.500" fontWeight="bold" textAlign="center">@ {job.company}</Text>
+                  <Icon as={FaBriefcase} w={6} h={6} color="#7f5af0" />
+                  <Heading as="h3" size="md" textAlign="center" fontFamily="Fira Mono, monospace" color="#fff">{job.role}</Heading>
+                  <Text color="#7f5af0" fontWeight="bold" textAlign="center" fontFamily="Fira Mono, monospace">@ {job.company}</Text>
                 </HStack>
-                <Text fontSize="sm" color="gray.500" mb={2} textAlign="center">{job.period}</Text>
+                <Text fontSize="sm" color="gray.400" mb={2} textAlign="center" fontFamily="Fira Mono, monospace">{job.period}</Text>
                 <List spacing={2} style={{ textAlign: 'center' }}>
                   {job.desc.map((d, i) => (
                     <ListItem key={i} display="flex" alignItems="center" justifyContent="center">
-                      <ListIcon as={FaChevronRight} color="brand.400" />
-                      <Text>{d}</Text>
+                      <ListIcon as={FaChevronRight} color="#7f5af0" />
+                      <Text color="gray.200">{d}</Text>
                     </ListItem>
                   ))}
                 </List>
               </MotionBox>
             ))}
-          </HStack>
+          </SimpleGrid>
         </VStack>
       </Box>
     </Box>

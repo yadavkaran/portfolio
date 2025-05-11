@@ -1,14 +1,10 @@
-import { Box, Container, Heading, Text, Button, VStack, HStack, Icon, useColorModeValue, SimpleGrid, Badge, Image, Flex, Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
+import { Box,  Heading, Text, Button, VStack, HStack, Icon, useColorModeValue, SimpleGrid, Badge, Flex, Tag, TagLabel, TagLeftIcon, Image } from '@chakra-ui/react'
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaServer, FaDatabase, FaTools, FaFileAlt } from 'react-icons/fa'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const MotionBox = motion(Box)
 
 const Home = () => {
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
-
   const bgGradient = useColorModeValue(
     'linear(to-br, brand.50, white)',
     'linear(to-br, gray.900, gray.800)'
@@ -24,75 +20,47 @@ const Home = () => {
   return (
     <Box 
       minH="100vh" 
-      bgGradient={bgGradient}
+      bgGradient="linear(to-br, #0f2027, #2c5364)"
       pt={20}
       position="relative"
       overflow="hidden"
     >
-      {/* Animated background elements */}
-      <MotionBox
-        position="absolute"
-        top="10%"
-        left="5%"
-        w="300px"
-        h="300px"
-        borderRadius="full"
-        bg="brand.100"
-        opacity={0.1}
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      <MotionBox
-        position="absolute"
-        bottom="10%"
-        right="5%"
-        w="200px"
-        h="200px"
-        borderRadius="full"
-        bg="brand.200"
-        opacity={0.1}
-        animate={{
-          scale: [1.2, 1, 1.2],
-          rotate: [90, 0, 90],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
 
       <Box as={motion.div} display="flex" alignItems="center" justifyContent="center" minH="100vh" w="100vw" position="relative" zIndex={1}>
         <VStack 
-          spacing={12} 
+          spacing={8} 
           align="center" 
           py={20}
           textAlign="center"
-          w="100%"
-          maxW="container.lg"
+          w={{ base: "full", md: "lg" }}
+          mx="auto"
+          px={4}
+          maxW="1400px"
         >
+          <Image
+            src="/profile.jpg"
+            alt="Karan Sandesh Yadav"
+            boxSize="180px"
+            borderRadius="full"
+            objectFit="cover"
+            mx="auto"
+            mb={6}
+          />
           <MotionBox
-            style={{ opacity, scale }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Heading 
               as="h1" 
-              size="3xl" 
-              bgGradient="linear(to-r, brand.400, brand.600)"
+              size={{ base: "3xl", md: "4xl" }} 
+              mb={4}
+              textAlign="center"
+              fontFamily="mono"
+              bgGradient="linear(to-r, purple.400, blue.500)"
               bgClip="text"
-              fontWeight="extrabold"
-              letterSpacing="tight"
             >
-              Karan Sandesh Yadav
+              KARAN SANDESH YADAV
             </Heading>
             <Text 
               fontSize="2xl" 
@@ -179,109 +147,107 @@ const Home = () => {
             </HStack>
           </MotionBox>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} w="100%">
-            <MotionBox
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <Box
-                p={8}
-                bg={useColorModeValue('white', 'gray.800')}
-                borderRadius="xl"
-                boxShadow="xl"
-                h="100%"
-                _hover={{ transform: 'translateY(-5px)', boxShadow: '2xl' }}
-                transition="all 0.3s"
-              >
-                <VStack spacing={4} align="stretch">
-                  <Heading size="md" color="brand.500">Quick Overview</Heading>
-                  <Text>
-                    I'm a Full Stack Developer 4 years of professional experience with expertise in Java, Spring Boot, React, and Node.js. 
-                    Graduated with my Master's in Computer Science at Pace University in May 2025, NY, with a GPA of 3.99/4.0.
-                  </Text>
-                  <Text>
-                    I've worked on various projects involving real-time data processing, microservices architecture, 
-                    and scalable web applications. My focus is on creating efficient, maintainable, and user-friendly solutions.
-                  </Text>
-                </VStack>
-              </Box>
-            </MotionBox>
-
-            <MotionBox
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <Box
-                p={8}
-                bg={useColorModeValue('white', 'gray.800')}
-                borderRadius="xl"
-                boxShadow="xl"
-                h="100%"
-                _hover={{ transform: 'translateY(-5px)', boxShadow: '2xl' }}
-                transition="all 0.3s"
-              >
-                <VStack spacing={4} align="stretch">
-                  <Heading size="md" color="brand.500">Expertise</Heading>
-                  <SimpleGrid columns={2} spacing={4}>
-                    {skills.map((skill, index) => (
-                      <Tag
-                        key={index}
-                        size="lg"
-                        borderRadius="full"
-                        variant="solid"
-                        colorScheme={skill.color}
-                        _hover={{ transform: 'scale(1.05)' }}
-                        transition="all 0.2s"
-                      >
-                        <TagLeftIcon as={skill.icon} />
-                        <TagLabel>{skill.label}</TagLabel>
-                      </Tag>
-                    ))}
-                  </SimpleGrid>
-                  <Text mt={4}>
-                    Specializing in building robust, scalable applications with modern technologies
-                    and best practices. Experienced in both frontend and backend development.
-                  </Text>
-                </VStack>
-              </Box>
-            </MotionBox>
-          </SimpleGrid>
-
-          <MotionBox
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
+          <Flex
+            direction={{ base: 'column', md: 'row' }}
+            justify="center"
+            align="flex-start"
+            gap={10}
             w="100%"
-            mt={8}
+            maxW="1100px"
             mx="auto"
+            flexWrap="wrap"
           >
             <Box
-              p={8}
-              bg={useColorModeValue('white', 'gray.800')}
-              borderRadius="xl"
-              boxShadow="xl"
-              _hover={{ transform: 'translateY(-5px)', boxShadow: '2xl' }}
+              p={{ base: 8, md: 10 }}
+              bg="rgba(255,255,255,0.12)"
+              borderRadius="2xl"
+              boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.10)"
+              borderLeft="8px solid #a259fa"
+              maxW="500px"
+              w="100%"
+              m="auto"
+              fontFamily="'Inter', 'Segoe UI', Arial, sans-serif"
               transition="all 0.3s"
             >
-              <VStack spacing={4} align="stretch">
-                <Heading size="md" color="brand.500">Current Focus</Heading>
-                <Text>
-                  Currently focused on mastering advanced concepts in Computer Science and expanding
-                  my expertise in cloud technologies and distributed systems.
+              <VStack spacing={6} align="stretch">
+                <Heading size="lg" color="#a259fa" fontWeight="bold" mb={2} letterSpacing="tight">Quick Overview</Heading>
+                <Text color="white" fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8}>
+                  I'm a Full Stack Developer 4 years of professional experience with expertise in Java, Spring Boot, React, and Node.js. 
+                  Graduated with my Master's in Computer Science at Pace University in May 2025, NY, with a GPA of 3.97/4.0.
                 </Text>
-                <Flex wrap="wrap" gap={2}>
-                <Badge colorScheme="orange" fontSize="sm" px={2} py={1} borderRadius="full">AI ethics</Badge>
-                  <Badge colorScheme="blue" fontSize="sm" px={2} py={1} borderRadius="full">LLM model</Badge>
-                  <Badge colorScheme="green" fontSize="sm" px={2} py={1} borderRadius="full">Distributed Systems</Badge>
-                  <Badge colorScheme="purple" fontSize="sm" px={2} py={1} borderRadius="full">Machine Learning</Badge>
-                  <Badge colorScheme="red" fontSize="sm" px={2} py={1} borderRadius="full">Cloud Computing</Badge>
-                  <Badge colorScheme="pink" fontSize="sm" px={2} py={1} borderRadius="full">Parallel Computing</Badge>
-                </Flex>
+                <Text color="white" fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8}>
+                  I've worked on various projects involving real-time data processing, microservices architecture, 
+                  and scalable web applications. My focus is on creating efficient, maintainable, and user-friendly solutions.
+                </Text>
               </VStack>
             </Box>
-          </MotionBox>
+
+            <Box
+              p={{ base: 8, md: 10 }}
+              bg="rgba(255,255,255,0.12)"
+              borderRadius="2xl"
+              boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.10)"
+              borderLeft="8px solid #a259fa"
+              maxW="500px"
+              w="100%"
+              m="auto"
+              fontFamily="'Inter', 'Segoe UI', Arial, sans-serif"
+              transition="all 0.3s"
+            >
+              <VStack spacing={6} align="stretch">
+                <Heading size="lg" color="#a259fa" fontWeight="bold" mb={2} letterSpacing="tight">Expertise</Heading>
+                <SimpleGrid columns={2} spacing={4}>
+                  {skills.map((skill, index) => (
+                    <Tag
+                      key={index}
+                      size="lg"
+                      borderRadius="full"
+                      variant="solid"
+                      colorScheme={skill.color}
+                      _hover={{ transform: 'scale(1.05)' }}
+                      transition="all 0.2s"
+                    >
+                      <TagLeftIcon as={skill.icon} />
+                      <TagLabel>{skill.label}</TagLabel>
+                    </Tag>
+                  ))}
+                </SimpleGrid>
+                <Text mt={4} color="white" fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8}>
+                  Specializing in building robust, scalable applications with modern technologies
+                  and best practices. Experienced in both frontend and backend development.
+                </Text>
+              </VStack>
+            </Box>
+          </Flex>
+
+          <Box
+            p={{ base: 8, md: 10 }}
+            bg="rgba(255,255,255,0.12)"
+            borderRadius="2xl"
+            boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.10)"
+            borderLeft="8px solid #a259fa"
+            maxW="1050px"
+            w="100%"
+            m="48px auto 0 auto"
+            fontFamily="'Inter', 'Segoe UI', Arial, sans-serif"
+            transition="all 0.3s"
+          >
+            <VStack spacing={6} align="stretch">
+              <Heading size="lg" color="#a259fa" fontWeight="bold" mb={2} letterSpacing="tight">Current Focus</Heading>
+              <Text color="white" fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8}>
+                Currently focused on mastering advanced concepts in Computer Science and expanding
+                my expertise in cloud technologies and distributed systems.
+              </Text>
+              <Flex wrap="wrap" gap={2}>
+                <Badge colorScheme="orange" fontSize="sm" px={2} py={1} borderRadius="full">AI ethics</Badge>
+                <Badge colorScheme="blue" fontSize="sm" px={2} py={1} borderRadius="full">LLM model</Badge>
+                <Badge colorScheme="green" fontSize="sm" px={2} py={1} borderRadius="full">Distributed Systems</Badge>
+                <Badge colorScheme="purple" fontSize="sm" px={2} py={1} borderRadius="full">Machine Learning</Badge>
+                <Badge colorScheme="red" fontSize="sm" px={2} py={1} borderRadius="full">Cloud Computing</Badge>
+                <Badge colorScheme="pink" fontSize="sm" px={2} py={1} borderRadius="full">Parallel Computing</Badge>
+              </Flex>
+            </VStack>
+          </Box>
         </VStack>
       </Box>
     </Box>

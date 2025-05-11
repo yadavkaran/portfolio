@@ -1,5 +1,5 @@
-import { Box, Container, Heading, Text, VStack, HStack, Icon, useColorModeValue, Divider, List, ListItem, ListIcon, Collapse } from '@chakra-ui/react'
-import { FaGraduationCap, FaTools, FaBriefcase, FaChevronRight, FaChevronDown, FaCodeBranch, FaDatabase, FaCogs, FaCloud, FaProjectDiagram, FaLaptopCode, FaServer, FaReact, FaJava, FaNodeJs, FaPython, FaAws, FaJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
+import { Box,  Heading, Text, VStack, HStack, Icon, useColorModeValue, List, ListItem, ListIcon, Collapse, Flex } from '@chakra-ui/react'
+import { FaGraduationCap, FaTools, FaChevronRight, FaChevronDown, FaCodeBranch, FaDatabase, FaCogs, FaCloud, FaProjectDiagram, FaLaptopCode, FaServer, FaReact, FaJava, FaNodeJs, FaPython, FaAws, FaJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
@@ -38,10 +38,7 @@ const About = () => {
         { label: 'Node.js', icon: FaNodeJs },
         { label: 'Redux', icon: FaReact },
         { label: 'Spring MVC', icon: FaServer },
-        { label: 'Flask', icon: FaPython },
-        { label: 'Beautiful Soup', icon: FaPython },
-        { label: 'Scrapy', icon: FaPython },
-        { label: 'Selenium', icon: FaPython },
+       
       ]
     },
     {
@@ -106,31 +103,35 @@ const About = () => {
   const cardShadow = 'xl'
 
   return (
-    <Box pt={20} minH="100vh" bg={useColorModeValue('gray.50', 'gray.900')}> 
+    <Box pt={20} minH="100vh" bgGradient="linear(to-br, #0f2027, #2c5364)"> 
       <Box as={motion.div} display="flex" alignItems="center" justifyContent="center" minH="100vh" w="100vw">
         <VStack spacing={12} align="center" maxW="lg" mx="auto">
-          <Heading as="h1" size="2xl" bgGradient="linear(to-r, brand.400, brand.600)" bgClip="text" fontWeight="extrabold" textAlign="center">About Me</Heading>
+          <Heading as="h1" size="2xl" bgGradient="linear(to-r, purple.400, blue.500)" bgClip="text" textAlign="center" fontFamily="mono">
+            About Me
+          </Heading>
           {/* Education Section */}
           <MotionBox
             p={8}
             maxW="lg"
             mx="auto"
-            bg={cardBg}
-            borderRadius="xl"
-            boxShadow={cardShadow}
-            whileHover={{ scale: 1.02 }}
+            bg="rgba(20, 20, 30, 0.85)"
+            borderRadius="2xl"
+            boxShadow="0 8px 32px 0 rgba(31, 38, 135, 0.37)"
+            border="1px solid rgba(255,255,255,0.18)"
+            backdropFilter="blur(6px)"
+            whileHover={{ scale: 1.04 }}
             transition={{ duration: 0.3 }}
           >
             <VStack align="center" spacing={2}>
               <HStack spacing={4} mb={4} justify="center">
                 <Icon as={FaGraduationCap} w={8} h={8} color="brand.500" />
-                <Heading as="h2" size="lg" textAlign="center">Education</Heading>
+                <Heading as="h2" size="lg" textAlign="center" color="white">Education</Heading>
               </HStack>
-              <Text fontSize="xl" fontWeight="bold" textAlign="center">{education.school}</Text>
-              <Text textAlign="center">{education.degree}</Text>
-              <Text textAlign="center">{education.period}</Text>
-              <Text textAlign="center">{education.gpa}</Text>
-              <Text fontWeight="bold" mt={4} textAlign="center">Relevant Courses:</Text>
+              <Text fontSize="xl" fontWeight="bold" textAlign="center" color="white">{education.school}</Text>
+              <Text textAlign="center" color="white">{education.degree}</Text>
+              <Text textAlign="center" color="white">{education.period}</Text>
+              <Text textAlign="center" color="white">{education.gpa}</Text>
+              <Text fontWeight="bold" mt={4} textAlign="center" color="white">Relevant Courses:</Text>
               <HStack wrap="wrap" spacing={2} mt={2} justify="center">
                 {education.courses.map((course, idx) => (
                   <Box as="span" key={idx} bg="blue.100" color="blue.800" px={3} py={1} borderRadius="full" fontSize="sm" m={1}>{course}</Box>
@@ -138,61 +139,44 @@ const About = () => {
               </HStack>
             </VStack>
           </MotionBox>
-          {/* Technical Skills Tree Section */}
-          <MotionBox
+          {/* Technical Skills Badges Cloud Section */}
+          <Box
             p={8}
             maxW="lg"
             mx="auto"
-            bg={cardBg}
-            borderRadius="xl"
-            boxShadow={cardShadow}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
+            bg="rgba(30, 30, 40, 0.92)"
+            borderRadius="2xl"
+            boxShadow="0 8px 32px 0 rgba(127, 90, 240, 0.18)"
+            border="2px solid rgba(127,90,240,0.18)"
+            backdropFilter="blur(14px)"
+            mt={4}
           >
-            <VStack align="center" spacing={2}>
-              <HStack spacing={4} mb={4} justify="center">
-                <Icon as={FaTools} w={8} h={8} color="brand.500" />
-                <Heading as="h2" size="lg" textAlign="center">Technical Skills</Heading>
+            <VStack align="center" spacing={6}>
+              <HStack spacing={4} mb={2} justify="center">
+                <Icon as={FaTools} w={8} h={8} color="purple.300" />
+                <Heading as="h2" size="lg" textAlign="center" color="purple.200" fontFamily="mono">Technical Skills</Heading>
               </HStack>
-              <HStack
-                spacing={4}
-                align="flex-start"
-                justify="center"
-                flexWrap="wrap"
-                w="100%"
-                direction={{ base: 'column', md: 'row' }}
-              >
-                {skillsTree.map((node, idx) => (
+              <Flex wrap="wrap" justify="center" gap={3}>
+                {/* Flatten all skills from skillsTree */}
+                {skillsTree.flatMap(node => node.children.map(child => ({...child, category: node.label}))).map((skill, idx) => (
                   <Box
                     key={idx}
-                    minW="180px"
-                    maxW="220px"
-                    bg={useColorModeValue('gray.100', 'gray.700')}
-                    borderRadius="lg"
+                    display="flex"
+                    alignItems="center"
+                    px={3}
+                    py={2}
+                    bg="rgba(127,90,240,0.15)"
+                    borderRadius="full"
                     boxShadow="md"
-                    p={4}
-                    mb={{ base: 4, md: 0 }}
+                    m={1}
                   >
-                    <HStack spacing={2} cursor="pointer" justify="center" onClick={() => toggleNode(idx)}>
-                      <Icon as={openNodes.includes(idx) ? FaChevronDown : FaChevronRight} color="brand.500" />
-                      <Icon as={node.icon} color="brand.600" />
-                      <Text fontWeight="bold">{node.label}</Text>
-                    </HStack>
-                    <Collapse in={openNodes.includes(idx)} animateOpacity>
-                      <List pl={2} pt={1} spacing={1} style={{ textAlign: 'center' }}>
-                        {node.children.map((child, cidx) => (
-                          <ListItem key={cidx} display="flex" alignItems="center" justifyContent="center">
-                            <ListIcon as={child.icon} color="brand.400" />
-                            <Text>{child.label}</Text>
-                          </ListItem>
-                        ))}
-                      </List>
-                    </Collapse>
+                    <Icon as={skill.icon} color="purple.300" boxSize={5} mr={2} />
+                    <Text color="white" fontWeight="medium" fontSize="md" fontFamily="mono">{skill.label}</Text>
                   </Box>
                 ))}
-              </HStack>
+              </Flex>
             </VStack>
-          </MotionBox>
+          </Box>
         </VStack>
       </Box>
     </Box>
