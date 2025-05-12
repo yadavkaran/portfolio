@@ -10,21 +10,21 @@ const Projects = () => {
       technologies: ['Java', 'Springboot', 'SQL', 'Tomcat'],
       description: 'Developed a Sales Data Analyzer (SDA) using Java and Spring Boot, integrating MySQL for normalized data storage and implementing dynamic sales analytics through ChartJS and jQuery. Implemented secure authentication and interactive data visualization.',
       icon: FaDatabase,
-      github: 'https://github.com/yadavkaran/sales-data-analyzer'
+      github: 'https://github.com/yadavkaran/SalesDataAnalyzer'
     },
     {
       title: 'Leetcode pro',
       technologies: ['NodeJs', 'Mongo', 'ReactJs', 'JWT token'],
       description: 'Created LeetCode Revise Pro using the MERN stack, implementing MCQ-based revision, comprehensive DSA exams, and Google Forms API integration. Engineered a secure admin dashboard with JWT authentication and role-based access control.',
       icon: FaCode,
-      github: 'https://github.com/yadavkaran/leetcode-pro'
+      github: 'https://github.com/yadavkaran/leetcodepro'
     },
     {
         title: 'VD legal Assistant',
         technologies: ['Python 3.10', 'PyPDF2 ', 'Google Gemini', 'Streamlit '],
         description: ' VD - Compliance & Legal Assistant VD is an AI-powered legal and compliance assistant designed specifically for startups, small businesses, and corporate teams. It helps founders, legal professionals, and compliance officers stay informed, draft documents, analyze contracts, and maintain regulatory compliance — without needing a full legal department',
         icon: FaCode,
-        github: 'https://github.com/yadavkaran/vd-legal-assistant'
+        github: 'https://github.com/yadavkaran/LegalAssistantAI'
       },
       {
         title: 'RideEase',
@@ -38,7 +38,7 @@ const Projects = () => {
       technologies: ['Kafka', 'Java', 'AWS', 'S3', 'Lambda', 'SNS', 'Glue'],
       description: 'Simplified a high-performance real-time data pipeline, leveraging Kafka for live stock data streaming to AWS S3. Utilized AWS Glue Crawler and Amazon Athena for streamlined schema management and querying.',
       icon: FaServer,
-      github: 'https://github.com/yadavkaran/event-driven-realtime-systems'
+      github: 'https://github.com/yadavkaran/'
     }
   ]
 
