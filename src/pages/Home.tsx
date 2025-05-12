@@ -1,4 +1,4 @@
-import { Box,  Heading, Text, Button, VStack, HStack, Icon, useColorModeValue, SimpleGrid, Badge, Flex, Tag, TagLabel, TagLeftIcon, Image } from '@chakra-ui/react'
+import { Box,  Heading, Text, Button, VStack, HStack, Icon, useColorModeValue, SimpleGrid, Badge, Flex, Tag, TagLabel, TagLeftIcon, Image, Stack } from '@chakra-ui/react'
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaServer, FaDatabase, FaTools, FaFileAlt } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 
@@ -92,7 +92,14 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <HStack spacing={6}>
+            <Stack
+              direction={{ base: 'column', sm: 'row' }}
+              spacing={4}
+              w="full"
+              maxW="500px"
+              mx="auto"
+              justify="center"
+            >
               <Button
                 as="a"
                 href="https://github.com/yadavkaran"
@@ -101,6 +108,7 @@ const Home = () => {
                 colorScheme="brand"
                 variant="solid"
                 size="lg"
+                w="full"
                 _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
                 transition="all 0.2s"
               >
@@ -114,6 +122,7 @@ const Home = () => {
                 colorScheme="brand"
                 variant="outline"
                 size="lg"
+                w="full"
                 _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
                 transition="all 0.2s"
               >
@@ -126,6 +135,7 @@ const Home = () => {
                 colorScheme="brand"
                 variant="outline"
                 size="lg"
+                w="full"
                 _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
                 transition="all 0.2s"
               >
@@ -139,12 +149,13 @@ const Home = () => {
                 colorScheme="brand"
                 variant="outline"
                 size="lg"
+                w="full"
                 _hover={{ transform: 'translateY(-2px)', boxShadow: 'lg' }}
                 transition="all 0.2s"
               >
                 Resume
               </Button>
-            </HStack>
+            </Stack>
           </MotionBox>
 
           <Flex
