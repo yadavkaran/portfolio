@@ -6,6 +6,8 @@ import About from './pages/About'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 import WorkExperience from './pages/WorkExperience'
+import { Analytics } from '@vercel/analytics/react'
+
 
 const theme = extendTheme({
   colors: {
@@ -78,6 +80,7 @@ function App() {
           <Route path="/work-experience" element={<WorkExperience />} />
         </Routes>
       </Router>
+      <Analytics />
     </ChakraProvider>
   )
 }
