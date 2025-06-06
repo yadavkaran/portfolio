@@ -14,20 +14,20 @@ const Contact = () => {
           </Text>
           <VStack spacing={6} w="100%">
             <HStack spacing={8} justify="center">
-              <Link href="mailto:ky63272n@pace.edu" target="_blank">
+              <Link href="mailto:mailforkaran1@gmail.com" target="_blank">
                 <Icon as={FaEnvelope} w={8} h={8} />
               </Link>
               <Link href="tel:+12016474238">
                 <Icon as={FaPhone} w={8} h={8} />
               </Link>
-              <Link href="https://linkedin.com/in/karan–yadav" target="_blank">
+              <Link href="https://linkedin.com/in/karan–-yadav" target="_blank">
                 <Icon as={FaLinkedin} w={8} h={8} />
               </Link>
               <Link href="https://github.com/yadavkaran" target="_blank">
                 <Icon as={FaGithub} w={8} h={8} />
               </Link>
             </HStack>
-            <Text>Email: ky63272n@pace.edu</Text>
+            <Text>Email: mailforkaran1@gmail.com</Text>
             <Text>Phone: (201) 647-4238</Text>
           </VStack>
           <Box w="100%" bg="white" borderRadius="xl" boxShadow="xl" p={8}>
