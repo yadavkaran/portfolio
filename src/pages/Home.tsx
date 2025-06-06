@@ -116,7 +116,7 @@ const Home = () => {
               </Button>
               <Button
                 as="a"
-                href="https://linkedin.com/in/karan–yadav"
+                href="https://linkedin.com/in/karan--yadav"
                 target="_blank"
                 leftIcon={<Icon as={FaLinkedin} />}
                 colorScheme="brand"
@@ -130,7 +130,7 @@ const Home = () => {
               </Button>
               <Button
                 as="a"
-                href="mailto:ky63272n@pace.edu"
+                href="mailto:mailforkaran1@gmail.com"
                 leftIcon={<Icon as={FaEnvelope} />}
                 colorScheme="brand"
                 variant="outline"
